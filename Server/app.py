@@ -1,22 +1,20 @@
 from flask import Flask, jsonify
-from flask_cors import CORS
 from dotenv import load_dotenv
+from flask_cors import CORS
+from flask import Flask
 from flask_pymongo import PyMongo
 import os
-import psycopg2
 
 load_dotenv()
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
-mongo = PyMongo(app)
 CORS(app)
 
-@app.route("/")
-def home_page():
-    online_users = mongo.db.users.find({"online": True})
-    return render_template("index.html",
-        online_users=online_users)
+app.config["MONGO_URI"] = "mongodb://localhost:27017/MS3_DB"
+mongo = PyMongo(app)
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 
@@ -24,5 +22,11 @@ def home_page():
 # def get_data():
 #     return jsonify({'message': 'Hello from Flask backend!'})
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# @app.route('/test_db', methods=['GET'])
+# def test_db():
+#     try:
+
+#         result = mongo.db.collection_name.find_one({'example_key': 'example_value'})
+#         return jsonify({'message': f'Successfully connected to MongoDB. Result: {result}'}), 200
+#     except Exception as e:
+#         return jsonify({'message': f'Error connecting to MongoDB: {str(e)}'}), 500

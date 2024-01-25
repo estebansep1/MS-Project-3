@@ -3,7 +3,6 @@ import axios from 'axios';
 
 function App() {
   const [data, setData] = useState('');
-
   useEffect(() => {
     fetchData();
   }, []);
