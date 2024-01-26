@@ -25,7 +25,7 @@ def get_data():
 # @app.route('/test_db', methods=['GET'])
 # def test_db():
 #     try:
-
+        
 #         result = mongo.db.collection_name.find_one({'example_key': 'example_value'})
 #         return jsonify({'message': f'Successfully connected to MongoDB. Result: {result}'}), 200
 #     except Exception as e:
