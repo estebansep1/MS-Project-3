@@ -19,14 +19,14 @@ def get_data():
 
 
 # TEST ROUTE TO SEE IF DATABASE IS CONNECTED
-# @app.route('/test_db', methods=['GET'])
-# def test_db():
-#     try:
+@app.route('/test_db', methods=['GET'])
+def test_db():
+    try:
         
-#         result = mongo.db.collection_name.find_one({'example_key': 'example_value'})
-#         return jsonify({'message': f'Successfully connected to MongoDB. Result: {result}'}), 200
-#     except Exception as e:
-#         return jsonify({'message': f'Error connecting to MongoDB: {str(e)}'}), 500
+        result = mongo.db.collection_name.find_one({'example_key': 'example_value'})
+        return jsonify({'message': f'Successfully connected to MongoDB. Result: {result}'}), 200
+    except Exception as e:
+        return jsonify({'message': f'Error connecting to MongoDB: {str(e)}'}), 500
 
 
 if __name__ == '__main__':
