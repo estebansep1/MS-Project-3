@@ -10,13 +10,15 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-app.config["MONGO_URI"] = "mongodb://localhost:27017/MS3_DB"
+app.config["MONGO_URI"] = os.environ.get("DATABASE_URL")
 mongo = PyMongo(app)
 
-# @app.route('/', methods=['GET'])
-# def get_data():
-#     return jsonify({'message': 'Hello from Flask backend!'})
+@app.route('/', methods=['GET'])
+def get_data():
+    return jsonify({'message': 'Hello from Flask backend!'})
 
+
+# TEST ROUTE TO SEE IF DATABASE IS CONNECTED
 # @app.route('/test_db', methods=['GET'])
 # def test_db():
 #     try:
