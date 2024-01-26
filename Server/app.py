@@ -18,9 +18,9 @@ if __name__ == '__main__':
 
 
 
-# @app.route('/', methods=['GET'])
-# def get_data():
-#     return jsonify({'message': 'Hello from Flask backend!'})
+@app.route('/', methods=['GET'])
+def get_data():
+    return jsonify({'message': 'Hello from Flask backend!'})
 
 # @app.route('/test_db', methods=['GET'])
 # def test_db():
