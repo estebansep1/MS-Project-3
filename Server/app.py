@@ -17,8 +17,6 @@ mongo = PyMongo(app)
 def get_data():
     return jsonify({'message': 'Hello from Flask backend!'})
 
-
-# TEST ROUTE TO SEE IF DATABASE IS CONNECTED
 # @app.route('/test_db', methods=['GET'])
 # def test_db():
 #     try:
@@ -27,3 +25,6 @@ def get_data():
 #         return jsonify({'message': f'Successfully connected to MongoDB. Result: {result}'}), 200
 #     except Exception as e:
 #         return jsonify({'message': f'Error connecting to MongoDB: {str(e)}'}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
