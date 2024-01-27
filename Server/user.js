@@ -77,3 +77,40 @@ class StableClient {
         console.log("call to end connection");
         if (this.isConnected()) {
             console.log("connected, ending connection");
+            await this._client.close();
+            this._client = null;
+        }
+    }
+}
+
+const client = new StableClient();
+
+module.exports = client;
+
+async function registerUser(username, password) {
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const userId = await client.insertUser(username, hashedPassword);
+    return userId;
+}
+
+async function loginUser(username, password) {
+    const user = await client.findUserByUsername(username);
+
+    if (!user) {
+        throw new Error("User not found");
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+        throw new Error("Invalid password");
+    }
+
+    const token = crypto.randomBytes(64).toString("hex");
+    await client.updateUserToken(user._id, token);
+
+    return token;
+}
+
+async function logoutUser(token) {
+    await client.removeUserToken(token);
+}
