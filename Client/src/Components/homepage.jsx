@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import TodoList from "./TodoList";
-import DropMenu from "./DropMenu"
+
 
 export default function HomePage() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -58,7 +57,7 @@ export default function HomePage() {
          className={isDarkMode ? "dark--mode--fill" : "light--mode--fill"} />
           <title>DarkMode Toggle</title>
         </svg>
-        {todos && <TodoList />}
+        
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className={`plus--btn ${isX ? "x" : ""}`}
@@ -72,7 +71,7 @@ export default function HomePage() {
           />
           <title>{isX ? "Close" : "Add List"}</title>
         </svg>
-        {menu && <DropMenu className={isDarkMode ? "dark--mode--fill" : "light--mode--fill"}/>}
+       
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="list--btn"
