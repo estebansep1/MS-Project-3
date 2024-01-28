@@ -25,7 +25,6 @@ function RegistrationForm() {
     });
 };
 
-
   return (
     <form onSubmit={handleSubmit}>
       <div className='align'>
