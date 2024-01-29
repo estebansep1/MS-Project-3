@@ -1,0 +1,46 @@
+@import "./variables.scss";
+
+.container {
+  text-align: center;
+  margin: $margin;
+  background-color: $secondaryColor;
+
+  h1 {
+    margin: $margin;
+    text-align: center;
+    svg {
+      color: $accentColor;
+    }
+  }
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+
+    .input {
+      margin: $margin;
+      height: $inputHeight;
+      width: $inputWidth;
+      border-radius: $inputBorderRadius;
+      border: $inputBorderWidth solid $accentColor;
+      font-size: $inputFontSize;
+      padding-inline: 5px;
+    }
+
+    .button {
+      width: $buttonWidth;
+      height: $buttonHeight;
+      font-weight: bold;
+      border-radius: $buttonBorderRadius;
+      font-size: $buttonFontSize;
+      background-color: $primaryColor;
+      border: $inputBorderWidth solid $primaryColor;
+      color: $secondaryColor;
+      margin: $margin;
+
+      &:hover {
+        transform: scale(0.9);
+      }
+    }
+  }
+}

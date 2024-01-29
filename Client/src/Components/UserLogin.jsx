@@ -1,18 +1,7 @@
 import React, { useState } from "react";
 import { CommentOutlined } from "@ant-design/icons";
 import _ from "lodash";
-
-const button = {
-  width: "10%",
-  height: 50,
-  fontWeight: "bold",
-  borderRadius: 10,
-  fontSize: 18,
-  backgroundColor: "#075e54",
-  borderWidth: 0,
-  color: "#fff",
-  margin: 10,
-};
+import "../Scss/UserLogin.scss";
 
 export default function UserLogin({ setUser }) {
   const [user, setAUser] = useState("");
@@ -34,28 +23,20 @@ export default function UserLogin({ setUser }) {
   }
 
   return (
-    <div>
-      <h1 style={{ margin: 10, textAlign: "center" }}>
+    <div className="container">
+      <h1>
         <CommentOutlined color={"green"} /> Chat Room{" "}
       </h1>
 
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div className="form-container">
         <input
-          style={{
-            margin: 10,
-            height: 30,
-            width: "25%",
-            borderRadius: 10,
-            borderWidth: 10,
-            fontSize: 15,
-            paddingInline: 5,
-          }}
+          className="input"
           value={user}
           onChange={(e) => setAUser(e.target.value)}
           placeholder="Write a random name"
           onKeyPress={handleKeyPress}
         ></input>
-        <button onClick={() => handleSetUser()} style={button}>
+        <button onClick={() => handleSetUser()} className="button">
           Login
         </button>
       </div>

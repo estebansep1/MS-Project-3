@@ -99,7 +99,7 @@ export default function ChatContainer() {
         <small
           style={{ backgroundColor: "lightblue", padding: 5, borderRadius: 5 }}
         >
-          Please note this application is still under the{" "}
+          *Please note this application is still under the {" "}
           <strong>DEVELOPMENT</strong> stage!
         </small>
       </div>
