@@ -1,5 +1,4 @@
 from flask import Flask, jsonify, render_template, request, session, redirect
-from flask_socketio import join_room, leave_room, send, SocketIO
 from dotenv import load_dotenv
 from flask_cors import CORS
 from flask import Flask
