@@ -1,11 +1,11 @@
-import React from "react";
-import Home from "./Components/Home"
-function App() {
+import ChatRoom from "./Components/ChatRoom";
 
+function App() {
   return (
-    <div>
-      <Home />
+    <div style={{ backgroundColor: "#ece5dd", maxHeight: "100%", padding: 10 }}>
+      <ChatRoom />
     </div>
-  )
+  );
 }
+
 export default App;

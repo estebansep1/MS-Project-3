@@ -1,62 +1,108 @@
-import React, { useState, useEffect, useRef } from 'react';
-import io from 'socket.io-client';
+import React, { useEffect, useState, useRef } from "react";
+import socketIOClient from "socket.io-client";
+import ChatBoxReciever from "./ChatBox"; // Import only what you need
+import { ChatBoxSender } from "./ChatBox"; // Import only what you need
+import InputText from "./InputText";
+import UserLogin from "./UserLogin";
 
-const ChatRoom = () => {
-  const [messages, setMessages] = useState([]);
-  const [inputMessage, setInputMessage] = useState('');
-  const messagesRef = useRef();
+export default function ChatContainer() {
+  let socketio = socketIOClient("http://localhost:5001");
+  const [chats, setChats] = useState([]);
+  const [user, setUser] = useState(localStorage.getItem("user"));
+  const avatar = localStorage.getItem("avatar");
+  const messagesEndRef = useRef(null);
 
-  const socket = io('http://localhost:5001', {
-  transports: ['websocket'],
-})
-
-  console.log('WebSocket Connection: ', socket);
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
-    messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+    scrollToBottom();
+  }, [chats]);
 
-    socket.on('Chat Message', (msg) => {
-        console.log('Received message:', msg);
-        setMessages((prevMessages) => [...prevMessages, msg]);
+  useEffect(() => {
+    socketio.on("chat", (senderChats) => {
+      setChats(senderChats);
     });
+  }, [socketio]);
 
-    return () => {
-        socket.disconnect();
-    };
-}, [messages, socket]);
+  function sendChatToSocket(chat) {
+    socketio.emit("chat", chat);
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputMessage.trim() !== '') {
-      socket.emit('Chat Message', inputMessage);
-      setInputMessage('');
-    }
-  };
+  function addMessage(chat) {
+    const newChat = { ...chat, user: localStorage.getItem("user"), avatar };
+    setChats([...chats, newChat]);
+    sendChatToSocket([...chats, newChat]);
+  }
+
+  function logout() {
+    localStorage.removeItem("user");
+    localStorage.removeItem("avatar");
+    setUser("");
+  }
+
+  function ChatsList() {
+    return (
+      <div style={{ height: "75vh", overflow: "scroll", overflowX: "hidden" }}>
+        {chats.map((chat, index) => {
+          if (chat.user === user)
+            return (
+              <ChatBoxSender
+                key={index}
+                message={chat.message}
+                avatar={chat.avatar}
+                user={chat.user}
+              />
+            );
+          return (
+            <ChatBoxReciever
+              key={index}
+              message={chat.message}
+              avatar={chat.avatar}
+              user={chat.user}
+            />
+          );
+        })}
+        <div ref={messagesEndRef} />
+      </div>
+    );
+  }
 
   return (
     <div>
-      <ul ref={messagesRef} style={{ listStyleType: 'none', margin: 0, padding: 0 }}>
-        {messages.map((msg, index) => (
-          <li key={index} style={{ padding: '0.5rem 1rem', backgroundColor: index % 2 === 0 ? '#efefef' : 'inherit' }}>
-            {msg}
-          </li>
-        ))}
-      </ul>
-      <form onSubmit={handleSubmit} style={{ background: 'rgba(0, 0, 0, 0.15)', padding: '0.25rem', position: 'fixed', bottom: 0, left: 0, right: 0, display: 'flex', height: '3rem', boxSizing: 'border-box', backdropFilter: 'blur(10px)' }}>
-        <input
-          type="text"
-          id="input"
-          autoComplete="off"
-          value={inputMessage}
-          onChange={(e) => setInputMessage(e.target.value)}
-          style={{ border: 'none', padding: '0 1rem', flexGrow: 1, borderRadius: '2rem', margin: '0.25rem', outline: 'none' }}
-        />
-        <button type="submit" style={{ background: '#333', border: 'none', padding: '0 1rem', margin: '0.25rem', borderRadius: '3px', outline: 'none', color: '#fff' }}>
-          Send
-        </button>
-      </form>
+      {user ? (
+        <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <h4>Username: {user}</h4>
+            <p
+              onClick={() => logout()}
+              style={{ color: "blue", cursor: "pointer" }}
+            >
+              Log Out
+            </p>
+          </div>
+          <ChatsList />
+          <InputText addMessage={addMessage} />
+        </div>
+      ) : (
+        <UserLogin setUser={setUser} />
+      )}
+
+      <div style={{ margin: 10, display: "flex", justifyContent: "center" }}>
+        <small
+          style={{ backgroundColor: "lightblue", padding: 5, borderRadius: 5 }}
+        >
+          Please note this application is still under the{" "}
+          <strong>DEVELOPMENT</strong> stage!
+        </small>
+      </div>
     </div>
   );
-};
-
-export default ChatRoom;
+}
