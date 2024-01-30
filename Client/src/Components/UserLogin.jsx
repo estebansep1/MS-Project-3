@@ -14,7 +14,6 @@ export default function UserLogin({ setUser }) {
       return;
     }
 
-
     const storedPassword = localStorage.getItem("password");
 
     if (pass !== storedPassword) {
@@ -23,8 +22,6 @@ export default function UserLogin({ setUser }) {
     }
 
     localStorage.setItem("user", user);
-    localStorage.setItem("pass", pass);
-
     setUser(user);
     localStorage.setItem(
       "avatar",
@@ -37,6 +34,19 @@ export default function UserLogin({ setUser }) {
     if (keyEvent.key === "Enter") {
       handleSetUser();
     }
+  }
+
+  function handleRegistration() {
+    const existingUser = localStorage.getItem(user);
+    if (existingUser) {
+      setErrorMessage("Username already exists. Choose a different username.");
+      return;
+    }
+
+    localStorage.setItem(user, pass);
+    setErrorMessage("Registration successful. You can now log in.");
+    setAUser(""); 
+    setAPass(""); 
   }
 
   return (
@@ -63,6 +73,9 @@ export default function UserLogin({ setUser }) {
         ></input>
         <button onClick={() => handleSetUser()} className="button">
           Login
+        </button>
+        <button onClick={() => handleRegistration()} className="button">
+          Register
         </button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
