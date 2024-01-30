@@ -5,6 +5,7 @@ import "../Scss/UserLogin.scss";
 
 export default function UserLogin({ setUser }) {
   const [user, setAUser] = useState("");
+  const [pass, setAPass] = useState("");
 
   function handleSetUser() {
     if (!user) return;
@@ -34,12 +35,19 @@ export default function UserLogin({ setUser }) {
           className="input"
           value={user}
           onChange={(e) => setAUser(e.target.value)}
-          placeholder="Write a random name"
+          placeholder="Write a Username"
           onKeyPress={handleKeyPress}
         ></input>
         <button onClick={() => handleSetUser()} className="button">
           Login
         </button>
+        <input
+          className="input"
+          value={pass}
+          onChange={(e) => setAPass(e.target.value)}
+          placeholder="Write a password"
+          onKeyPress={handleKeyPress}
+        ></input>
       </div>
     </div>
   );
