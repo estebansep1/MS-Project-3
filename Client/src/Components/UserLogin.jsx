@@ -9,6 +9,7 @@ export default function UserLogin({ setUser }) {
   function handleSetUser() {
     if (!user) return;
     localStorage.setItem("user", user);
+    
     setUser(user);
     localStorage.setItem(
       "avatar",
