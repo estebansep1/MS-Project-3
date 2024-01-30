@@ -45,8 +45,8 @@ export default function UserLogin({ setUser }) {
 
     localStorage.setItem(user, pass);
     setErrorMessage("Registration successful. You can now log in.");
-    setAUser(""); 
-    setAPass(""); 
+    setAUser("");
+    setAPass("");
   }
 
   return (
