@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import ChatRoomList from './Components/chatroomlist';
-
+import ChatRoom from "./Components/ChatRoom";
 
 function App() {
   return (
-    <div className="App">
-      <ChatRoomList />
+    <div style={{ backgroundColor: "#ece5dd", maxHeight: "100%", padding: 10 }}>
+      <ChatRoom />
     </div>
   );
 }
