@@ -23,6 +23,7 @@ export default function UserLogin({ setUser }) {
     }
 
     localStorage.setItem("user", user);
+    
     setUser(user);
     localStorage.setItem(
       "avatar",
