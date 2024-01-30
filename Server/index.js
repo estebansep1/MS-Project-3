@@ -19,14 +19,17 @@ const buildPath = join(_dirname, "build");
 app.use(express.static(buildPath));
 
 app.get("*", function(req, res) {
-    res.sendFile(
-        join(_dirname, "../client/build/index.html"),
-        function (err) {
-            if (err) {
-                res.status(500).send(err);
-            }
+    const indexPath = join(_dirname, "../client/build/index.html");
+    console.log("Trying to send:", indexPath);
+
+    res.sendFile(indexPath, function (err) {
+        if (err) {
+            console.error("Error sending file:", err);
+            res.status(500).send(err);
+        } else {
+            console.log("File sent successfully");
         }
-    );
+    });
 });
 
 io.on("connection", (socket) => {
