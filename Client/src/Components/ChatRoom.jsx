@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import socketIOClient from "socket.io-client";
-import ChatBoxReciever from "./ChatBox"; // Import only what you need
-import { ChatBoxSender } from "./ChatBox"; // Import only what you need
+import ChatBoxReciever from "./ChatBox"; 
+import { ChatBoxSender } from "./ChatBox";
 import InputText from "./InputText";
 import UserLogin from "./UserLogin";
+
 
 export default function ChatContainer() {
   let socketio = socketIOClient("http://localhost:5001");
@@ -17,6 +18,7 @@ export default function ChatContainer() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  
   useEffect(() => {
     scrollToBottom();
   }, [chats]);
