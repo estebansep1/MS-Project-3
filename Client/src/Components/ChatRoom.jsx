@@ -9,6 +9,7 @@ export default function ChatContainer() {
   let socketio = socketIOClient("http://localhost:5001");
   const [chats, setChats] = useState([]);
   const [user, setUser] = useState(localStorage.getItem("user"));
+  const [pass, setPass] = useState(localStorage.getItem("pass"));
   const avatar = localStorage.getItem("avatar");
   const messagesEndRef = useRef(null);
 
@@ -38,6 +39,7 @@ export default function ChatContainer() {
 
   function logout() {
     localStorage.removeItem("user");
+    localStorage.removeItem("pass");
     localStorage.removeItem("avatar");
     setUser("");
   }
