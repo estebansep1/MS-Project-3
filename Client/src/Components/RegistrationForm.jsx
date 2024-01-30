@@ -7,7 +7,7 @@ import './LoginRegistration.css';
 function RegistrationForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000'; // Update the URL to your backend server
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -18,10 +18,8 @@ function RegistrationForm() {
         password: password,
       });
 
-      // Assuming the backend returns a success message or user ID
       console.log(response.data);
 
-      // Navigate to the login page or any other page
       navigate('/login');
     } catch (error) {
       console.error('Registration failed:', error);
