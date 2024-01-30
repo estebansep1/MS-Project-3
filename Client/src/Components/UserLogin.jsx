@@ -14,7 +14,7 @@ export default function UserLogin({ setUser }) {
       return;
     }
 
-    const storedPassword = localStorage.getItem("password");
+    const storedPassword = localStorage.getItem(user);
 
     if (pass !== storedPassword) {
       setErrorMessage("Incorrect password.");
@@ -37,16 +37,23 @@ export default function UserLogin({ setUser }) {
   }
 
   function handleRegistration() {
+    if (!user || !pass) {
+      setErrorMessage("Username and password are required.");
+      return;
+    }
+
     const existingUser = localStorage.getItem(user);
+
     if (existingUser) {
       setErrorMessage("Username already exists. Choose a different username.");
       return;
     }
 
     localStorage.setItem(user, pass);
+
     setErrorMessage("Registration successful. You can now log in.");
-    setAUser(""); 
-    setAPass(""); 
+    setAUser("");
+    setAPass("");
   }
 
   return (
