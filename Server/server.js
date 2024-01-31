@@ -31,10 +31,10 @@ app.post('/register', async (req, res) => {
       password,
     });
 
-  
+
     await newUser.save();
 
-  
+
     res.status(201).json({ message: 'Registration successful' });
   } catch (error) {
     console.error(error);
