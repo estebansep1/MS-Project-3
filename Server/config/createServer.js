@@ -1,7 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-// import allRoutes from '../routes/public.js';
-
 
 function createServers() {
     const app = express();
@@ -17,7 +15,6 @@ function createServers() {
                 );
         }
     });
-    app.use(allRoutes);
     return app;
 }   
 
