@@ -5,7 +5,6 @@ import { dirname, join } from 'path';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import createServers from './config/createServer.js';
-import db from './config/keys.js'
 
 const app = express();
 const server = createHttpServer(app);
@@ -24,14 +23,11 @@ app.use(express.static(buildPath));
 
 
 mongoose 
-    .connect(db)
+    .connect(process.env.MONGO_URI)
     .then(() => {
-        const app = createServers();
-        const port = process.env.PORT || 5000;
-        app.listen(port, () => {
-            console.log(`App running on port ${port}`);
-        });
+        console.log('connected to mongo db')
     })
+
     .catch((err) => {
         console.log(`Could not connect to MongoDB and start the server`)
         console.log(err);
