@@ -7,7 +7,9 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URL, {
+const MONGO_URL = process.env.MONGO_URL
+
+mongoose.connect(MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -31,10 +33,8 @@ app.post('/register', async (req, res) => {
       password,
     });
 
-  
     await newUser.save();
 
-  
     res.status(201).json({ message: 'Registration successful' });
   } catch (error) {
     console.error(error);
