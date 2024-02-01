@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const styles = {
   button: {
@@ -28,22 +28,26 @@ const styles = {
 
 export default function InputText({ addMessage }) {
   const [message, setMessage] = useState("");
+  const textareaRef = useRef(null);
 
   function addAMessage() {
     addMessage({
       message,
     });
     setMessage("");
+    textareaRef.current.focus();
   }
 
   function handleKeyPress(keyEvent) {
     if (keyEvent.key === "Enter") {
       addAMessage();
+      keyEvent.preventDefault();
     }
   }
   return (
     <div style={styles.textContainer}>
       <textarea
+        ref={textareaRef}
         style={styles.textarea}
         rows={6}
         placeholder="Write something..."
