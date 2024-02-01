@@ -4,7 +4,8 @@ import { Server } from 'socket.io';
 import { dirname, join } from 'path';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import createServers from './config/createServer.js';
+
+
 
 const app = express();
 const server = createHttpServer(app);
