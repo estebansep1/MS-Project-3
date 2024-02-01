@@ -1,6 +1,5 @@
 const User = require('../models/user');
 
-
 app.post('/register', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -15,9 +14,7 @@ app.post('/register', async (req, res) => {
             password,
         });
 
-
         await newUser.save();
-
 
         res.status(201).json({ message: 'Registration successful' });
     } catch (error) {
@@ -25,7 +22,6 @@ app.post('/register', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
 
 //   const User = mongoose.model('User', {
 //     username: String,
