@@ -4,16 +4,22 @@ import { Server } from 'socket.io';
 import { dirname, join } from 'path';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import cors from 'cors'
+dotenv.config()
+
+
+
+
 
 const app = express();
-const server = createHttpServer(app);
-const io = new Server(server, {
-    cors: {
-        origin: "*"
-    }
-});
+app.use(cors())
+// const server = createHttpServer(app);
+// const io = new Server(server, {
+//     cors: {
+//         origin: "*"
+//     }
+// });
 
-dotenv.config()
 
 const _dirname = dirname("");
 const buildPath = join(_dirname, "build");
@@ -31,16 +37,16 @@ mongoose
         console.log(err);
     })
 
-io.on("connection", (socket) => {
-    console.log('We are connected');
+// io.on("connection", (socket) => {
+//     console.log('We are connected');
     
-    socket.on("chat", chat => {
-        io.emit('chat', chat);
-    });
+//     socket.on("chat", chat => {
+//         io.emit('chat', chat);
+//     });
     
-    socket.on('disconnect', () => {
-        console.log('disconnected');
-    });
-});
+//     socket.on('disconnect', () => {
+//         console.log('disconnected');
+//     });
+// });
 
-server.listen(process.env.PORT, () => console.log(`Listening on Port ${process.env.PORT}`));
+app.listen(process.env.PORT, () => console.log(`Listening on Port ${process.env.PORT}`));
