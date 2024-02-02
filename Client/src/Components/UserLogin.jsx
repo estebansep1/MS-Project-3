@@ -36,24 +36,20 @@ export default function UserLogin({ setUser }) {
     }
   }
 
-  function handleRegistration() {
+  async function handleRegistration() {
     if (!user || !pass) {
       setErrorMessage("Username and password are required.");
       return;
     }
 
-    const existingUser = localStorage.getItem(user);
 
-    if (existingUser) {
-      setErrorMessage("Username already exists. Choose a different username.");
-      return;
-    }
-
-    localStorage.setItem(user, pass);
-
-    setErrorMessage("Registration successful. You can now log in.");
-    setAUser("");
-    setAPass("");
+  await fetch(`http://localhost:5001/users/register`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ username: user, password: pass})
+		})
   }
 
   return (

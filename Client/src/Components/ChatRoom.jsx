@@ -12,6 +12,9 @@ export default function ChatContainer() {
   const [pass, setPass] = useState(localStorage.getItem("pass"));
   const avatar = localStorage.getItem("avatar");
   const messagesEndRef = useRef(null);
+  const password = 'your_password';
+
+
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
