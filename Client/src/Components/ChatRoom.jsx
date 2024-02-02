@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useRef } from "react";
 import socketIOClient from "socket.io-client";
 import ChatBoxReciever from "./ChatBox"; 
