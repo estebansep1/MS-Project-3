@@ -30,12 +30,8 @@ app.post('/register', async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
-module.exports = app;
-=======
 //   const User = mongoose.model('User', {
 //     username: String,
 //     password: String,
 //   });
 
->>>>>>> 051333652e3fe3ce1744ebb2e6ef19bb43aa0f6a
