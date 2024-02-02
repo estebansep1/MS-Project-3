@@ -1,18 +1,25 @@
-const User = require('../models/user');
-
+const bcrypt = require('bcrypt');
+const User = require('../models/user'); 
 
 app.post('/register', async (req, res) => {
+    console.log('test')
     try {
         const { username, password } = req.body;
+        console.log(username)
 
         const existingUser = await User.findOne({ username });
         if (existingUser) {
             return res.status(400).json({ message: 'Username already exists' });
         }
 
+
+        const saltRounds = 10; 
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+
         const newUser = new User({
             username,
-            password,
+            password: hashedPassword,
         });
 
 
@@ -26,9 +33,4 @@ app.post('/register', async (req, res) => {
     }
 });
 
-
-//   const User = mongoose.model('User', {
-//     username: String,
-//     password: String,
-//   });
-
+module.exports = app;

@@ -24,4 +24,4 @@ app.listen(PORT, () => {
 });
 
 
-
+app.use('/users', require('./controllers/users'))
