@@ -58,13 +58,7 @@ Chat Sphere is designed to facilitate real-time communication. Follow these step
 2. **Join or Create a Room:**
    - Join an existing room or create a new one to start chatting.
 
-3. **Send Messages:**
-   - Use the chat interface to send and receive messages in real-time.
-
-4. **Emoji Support:**
-   - Express yourself with emoji support in messages.
-
-5. **Stay Connected:**
+3. **Stay Connected:**
    - Chat Sphere keeps you connected with other users in the same room.
 
 ## Technologies Used
