@@ -8,21 +8,14 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
-        unique: true,
+        required: true
     },
-    
 });
 
-  
   const User = mongoose.model('User', userSchema);
   
   module.exports = User;
   
-
-
-
-
   //   passwordDigest: {
       //     type: String,
       //     required: true,

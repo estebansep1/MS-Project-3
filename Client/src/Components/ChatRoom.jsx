@@ -6,7 +6,6 @@ import { ChatBoxSender } from "./ChatBox";
 import InputText from "./InputText";
 import UserLogin from "./UserLogin";
 
-
 export default function ChatContainer() {
   let socketio = socketIOClient("http://localhost:5001");
   const [chats, setChats] = useState([]);
@@ -19,7 +18,6 @@ export default function ChatContainer() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  
   useEffect(() => {
     scrollToBottom();
   }, [chats]);
