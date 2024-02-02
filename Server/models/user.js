@@ -12,15 +12,10 @@ const userSchema = new mongoose.Schema({
     },
 });
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
-
+  const User = mongoose.model('User', userSchema);
   
-
-
-
-
+  module.exports = User;
+  
   //   passwordDigest: {
       //     type: String,
       //     required: true,

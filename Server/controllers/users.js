@@ -1,5 +1,4 @@
-const bcrypt = require('bcrypt');
-const User = require('../models/user'); 
+const User = require('../models/user');
 
 app.post('/register', async (req, res) => {
     console.log('test')
@@ -22,9 +21,7 @@ app.post('/register', async (req, res) => {
             password: hashedPassword,
         });
 
-
         await newUser.save();
-
 
         res.status(201).json({ message: 'Registration successful' });
     } catch (error) {
@@ -33,4 +30,12 @@ app.post('/register', async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
 module.exports = app;
+=======
+//   const User = mongoose.model('User', {
+//     username: String,
+//     password: String,
+//   });
+
+>>>>>>> 051333652e3fe3ce1744ebb2e6ef19bb43aa0f6a
