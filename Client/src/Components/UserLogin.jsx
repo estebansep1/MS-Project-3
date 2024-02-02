@@ -8,26 +8,33 @@ export default function UserLogin({ setUser }) {
   const [pass, setAPass] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  function handleSetUser() {
+  async function handleSetUser() {
     if (!user || !pass) {
       setErrorMessage("Username and password are required.");
       return;
     }
 
-    const storedPassword = localStorage.getItem(user);
+    const response = await fetch(`http://localhost:5001/users/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username: user, password: pass })
+    });
 
-    if (pass !== storedPassword) {
-      setErrorMessage("Incorrect password.");
-      return;
+    if (response.status === 401) {
+      setErrorMessage("Invalid username or password");
+    } else if (response.status === 200) {
+      setErrorMessage("Login successful");
+      localStorage.setItem("user", user);
+      setUser(user);
+      localStorage.setItem(
+        "avatar",
+        `https://picsum.photos/id/${_.random(1, 1000)}/200/300`
+      );
+    } else {
+      setErrorMessage("Something went wrong. Please try again.");
     }
-
-    localStorage.setItem("user", user);
-    setUser(user);
-    localStorage.setItem(
-      "avatar",
-      `https://picsum.photos/id/${_.random(1, 1000)}/200/300`
-    );
-    setErrorMessage("");
   }
 
   function handleKeyPress(keyEvent) {
@@ -42,14 +49,24 @@ export default function UserLogin({ setUser }) {
       return;
     }
 
+    const response = await fetch(`http://localhost:5001/users/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username: user, password: pass })
+    });
 
-  await fetch(`http://localhost:5001/users/register`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ username: user, password: pass})
-		})
+    if (response.status === 400) {
+      const data = await response.json();
+      setErrorMessage(data.message);
+    } else if (response.status === 201) {
+      setErrorMessage("Registration successful. You can now log in.");
+      setAUser("");
+      setAPass("");
+    } else {
+      setErrorMessage("Something went wrong. Please try again.");
+    }
   }
 
   return (
