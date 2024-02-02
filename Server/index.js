@@ -5,8 +5,6 @@ import { dirname, join } from 'path';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-
-
 const app = express();
 const server = createHttpServer(app);
 const io = new Server(server, {
@@ -22,7 +20,6 @@ const buildPath = join(_dirname, "build");
 
 app.use(express.static(buildPath));
 
-
 mongoose 
     .connect(process.env.MONGO_URI)
     .then(() => {
@@ -33,7 +30,6 @@ mongoose
         console.log(`Could not connect to MongoDB and start the server`)
         console.log(err);
     })
-
 
 io.on("connection", (socket) => {
     console.log('We are connected');
