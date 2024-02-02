@@ -55,7 +55,7 @@ Chat Sphere is designed to facilitate real-time communication. Follow these step
 1. **Enter a Username:**
    - Provide a unique username to join the chat.
 
-2. **Join or Create a Room:**
+2. **Join or Create a Room:** (pending)
    - Join an existing room or create a new one to start chatting.
 
 3. **Stay Connected:**
