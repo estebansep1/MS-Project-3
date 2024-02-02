@@ -3,11 +3,11 @@ const bcrypt = require('bcrypt');
 const router = require('express').Router()
 
 router.post('/register', async (req, res) => {
-    console.log('test')
+    
     try {
         const { username, password } = req.body;
         console.log(username)
-
+        console.log(password)
         const existingUser = await User.findOne({ username });
         if (existingUser) {
             return res.status(400).json({ message: 'Username already exists' });
