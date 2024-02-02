@@ -1,6 +1,8 @@
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
+const router = require('express').Router()
 
-app.post('/register', async (req, res) => {
+router.post('/register', async (req, res) => {
     console.log('test')
     try {
         const { username, password } = req.body;
@@ -30,8 +32,9 @@ app.post('/register', async (req, res) => {
     }
 });
 
+
+module.exports = router
 //   const User = mongoose.model('User', {
 //     username: String,
 //     password: String,
 //   });
-
