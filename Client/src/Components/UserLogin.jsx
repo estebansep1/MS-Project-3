@@ -9,7 +9,7 @@ export default function UserLogin({ setUser }) {
   const [pass, setAPass] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const socketio = socketIOClient("http://localhost:5001");
+  const socketio = socketIOClient("https://ms-project-3.onrender.com/");
 
   async function handleSetUser() {
     if (!user || !pass) {
