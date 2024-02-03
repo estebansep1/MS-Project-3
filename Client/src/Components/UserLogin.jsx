@@ -14,7 +14,7 @@ export default function UserLogin({ setUser }) {
       return;
     }
 
-    const response = await fetch(`http://localhost:5001/users/login`, {
+    const response = await fetch(`/users/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ export default function UserLogin({ setUser }) {
       return;
     }
 
-    const response = await fetch(`http://localhost:5001/users/register`, {
+    const response = await fetch(`/users/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
