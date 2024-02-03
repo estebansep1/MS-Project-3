@@ -26,9 +26,18 @@ To run Chat Sphere locally, follow these steps:
      ```bash
      cd client
      ```
+     Run npm install:
+     ```bash
+     npm install
+     ```
+
    - Open a separate terminal window and navigate to the `server` directory:
      ```bash
      cd server
+     ```
+     Run npm install:
+     ```bash
+     npm install
      ```
 
 4. **Run the Server:**
