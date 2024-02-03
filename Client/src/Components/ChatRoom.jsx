@@ -7,7 +7,7 @@ import InputText from "./InputText";
 import UserLogin from "./UserLogin";
 
 export default function ChatContainer() {
-  let socketio = socketIOClient("http://localhost:5001");
+ // let socketio = socketIOClient("http://localhost:5001");
   const [chats, setChats] = useState([]);
   const [user, setUser] = useState(localStorage.getItem("user"));
   const [pass, setPass] = useState(localStorage.getItem("pass"));
@@ -25,16 +25,6 @@ export default function ChatContainer() {
     scrollToBottom();
   }, [chats]);
 
-  useEffect(() => {
-    socketio.on("chat", (senderChats) => {
-      setChats(senderChats);
-    });
-  
-    return () => {
-      // Cleanup function to close the Socket.IO connection
-      socketio.disconnect();
-    };
-  }, [socketio]);
 
   function sendChatToSocket(chat) {
     socketio.emit("chat", chat);
