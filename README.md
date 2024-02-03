@@ -6,6 +6,8 @@ Chat Sphere is inspired by the need for real-time communication, enabling users 
 
 ## How to Run Chat Sphere
 
+<a name="run"></a>
+
 To run Chat Sphere locally, follow these steps:
 
 ### Fork and Clone the Repository:
@@ -75,6 +77,10 @@ Chat Sphere is built using modern web technologies, making it reliable and user-
 
 Here are the current issues we're aware of:
 
+- [Issue]: **Application Limited to Local Environment:**
+  - Currently, the application is only functional when running locally on your machine. We apologize for any inconvenience. Our team is actively addressing this issue to make the application accessible in various environments.
+
+    For guidance on running ChatSphere locally, please refer to the [How to Run ChatSphere](#run) section in our readme.
 - [Issue]: **Pending Features - Admin and Room Management:**
   We are actively working on implementing additional features, including:
 
@@ -85,10 +91,11 @@ Here are the current issues we're aware of:
     - We are working on incorporating advanced room management features, allowing users to create, customize, and manage their chat rooms effectively.
 
   We appreciate your patience as we enhance Chat Sphere with these exciting new features! Feel free to check for updates in our future releases.
+
 ## Contributors
 
 The team behind bringing you Chat Sphere:
- - [Esteban Sepulveda](https://github.com/estebansep1) (me)
+- [Esteban Sepulveda](https://github.com/estebansep1) (me)
 - [Seth Goodman](https://github.com/sethgoody)
 - [Benjamin McConnaughy](https://github.com/MyManny)
 - [Brett Kendrick](https://github.com/BrettKendrick)
