@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { CommentOutlined } from "@ant-design/icons";
 import _ from "lodash";
 import "./css/UserLogin.css";
+import socketIOClient from "socket.io-client";
 
 export default function UserLogin({ setUser }) {
   const [user, setAUser] = useState("");
   const [pass, setAPass] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const socketio = socketIOClient("http://localhost:5001");
 
   async function handleSetUser() {
     if (!user || !pass) {
@@ -14,13 +17,21 @@ export default function UserLogin({ setUser }) {
       return;
     }
 
-    const response = await fetch(`http://localhost:5001/users/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username: user, password: pass })
+    socketio.emit("user-login", {
+      user,
+      avatar: `https://picsum.photos/id/${_.random(1, 1000)}/200/300`,
     });
+
+    const response = await fetch(
+      `https://ms-project-3.onrender.com/users/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: user, password: pass }),
+      }
+    );
 
     if (response.status === 401) {
       setErrorMessage("Invalid username or password");
@@ -49,13 +60,16 @@ export default function UserLogin({ setUser }) {
       return;
     }
 
-    const response = await fetch(`http://localhost:5001/users/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username: user, password: pass })
-    });
+    const response = await fetch(
+      `https://ms-project-3.onrender.com/users/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: user, password: pass }),
+      }
+    );
 
     if (response.status === 400) {
       const data = await response.json();

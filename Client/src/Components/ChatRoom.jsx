@@ -29,6 +29,11 @@ export default function ChatContainer() {
     socketio.on("chat", (senderChats) => {
       setChats(senderChats);
     });
+  
+    return () => {
+      // Cleanup function to close the Socket.IO connection
+      socketio.disconnect();
+    };
   }, [socketio]);
 
   function sendChatToSocket(chat) {
