@@ -89,6 +89,7 @@ Here are the current issues we're aware of:
 
 A special thanks to the great group of people who collaborated with me on this project:
  
+- [Esteban Sepulveda](https://github.com/estebansep1) (me)
 - [Seth Goodman](https://github.com/sethgoody)
 - [Benjamin McConnaughy](https://github.com/MyManny)
 - [Brett Kendrick](https://github.com/BrettKendrick)
