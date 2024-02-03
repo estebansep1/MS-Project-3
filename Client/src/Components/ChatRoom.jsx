@@ -7,7 +7,7 @@ import InputText from "./InputText";
 import UserLogin from "./UserLogin";
 
 export default function ChatContainer() {
- // let socketio = socketIOClient("http://localhost:5001");
+ let socketio = socketIOClient("https://ms-project-3.onrender.com/");
   const [chats, setChats] = useState([]);
   const [user, setUser] = useState(localStorage.getItem("user"));
   const [pass, setPass] = useState(localStorage.getItem("pass"));

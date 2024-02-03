@@ -14,11 +14,11 @@ dotenv.config()
 const app = express();
 app.use(cors())
 // const server = createHttpServer(app);
-// const io = new Server(server, {
-//     cors: {
-//         origin: "*"
-//     }
-// });
+const io = new Server(server, {
+    cors: {
+        origin: "https://ms-project-3.onrender.com/"
+    }
+});
 
 
 const _dirname = dirname("");
