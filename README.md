@@ -87,8 +87,8 @@ Here are the current issues we're aware of:
   We appreciate your patience as we enhance Chat Sphere with these exciting new features! Feel free to check for updates in our future releases.
 ## Contributors
 
-A special thanks to the great group of people who collaborated with me on this project:
- 
+The team behind bringing you Chat Sphere:
+ - [Esteban Sepulveda](https://github.com/estebansep1) (me)
 - [Seth Goodman](https://github.com/sethgoody)
 - [Benjamin McConnaughy](https://github.com/MyManny)
 - [Brett Kendrick](https://github.com/BrettKendrick)
