@@ -104,7 +104,7 @@ Here are the current issues we're aware of:
 ## Contributors
 
 The team behind bringing you Chat Sphere:
-- [Esteban Sepulveda](https://github.com/estebansep1) (me)
+- [Esteban Sepulveda](https://github.com/estebansep1)
 - [Seth Goodman](https://github.com/sethgoody)
 - [Benjamin McConnaughy](https://github.com/MyManny)
 - [Brett Kendrick](https://github.com/BrettKendrick)
