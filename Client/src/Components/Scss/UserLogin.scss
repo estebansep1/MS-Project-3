@@ -1,5 +1,9 @@
 @import "./variables";
 
+body {
+  background-color: rgb(236, 229, 221);
+}
+
 .container {
   font-family: $fontFamily;
   text-align: center;
