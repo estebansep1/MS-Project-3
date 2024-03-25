@@ -7,7 +7,7 @@ const styles = {
     fontWeight: "bold",
     borderRadius: 10,
     fontSize: 18,
-    backgroundColor: "#34b7f1",
+    backgroundColor: "#dc3545",
     borderWidth: 0,
     color: "#fff",
   },
