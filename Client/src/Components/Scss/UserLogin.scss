@@ -1,5 +1,22 @@
 @import "./variables";
 
+body {
+  background-color: rgb(236, 229, 221);
+  background-image: url('.././images/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.container-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
 .container {
   font-family: $fontFamily;
   text-align: center;
@@ -7,8 +24,9 @@
   margin: 5% auto;
   padding: 2rem;
   background-color: $secondaryColor;
-  border-radius: 5px;
+  border-radius: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  
 
   h1 {
     color: $accentColor;
@@ -65,11 +83,6 @@
 
     .error-message {
       color: $errorColor;
-      background-color: lighten($errorColor, 40%);
-      padding: 0.75rem;
-      border-radius: 4px;
-      margin: 1rem 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
   }
 }

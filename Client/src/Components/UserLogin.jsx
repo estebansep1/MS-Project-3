@@ -70,11 +70,11 @@ export default function UserLogin({ setUser }) {
   }
 
   return (
+    <div className="container-1">
     <div className="container">
       <h1>
         <CommentOutlined color={"green"} /> Chat Room{" "}
       </h1>
-
       <div className="form-container">
         <input
           className="input"
@@ -99,6 +99,7 @@ export default function UserLogin({ setUser }) {
         </button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
+    </div>
     </div>
   );
 }
